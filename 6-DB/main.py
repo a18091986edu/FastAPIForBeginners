@@ -1,4 +1,3 @@
-from models.tasks import TaskModel
 from contextlib import asynccontextmanager
 from database import engine, Model
 from fastapi import FastAPI
