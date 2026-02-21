@@ -4,8 +4,6 @@ from database import engine, Base
 from routers.books import router as books_router
 
 
-
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     async with engine.begin() as conn:

@@ -80,7 +80,9 @@ async def update_book(id: int, book_data: SBookAdd, session: SessionDep) -> SBoo
     return updated_book
 
 
-@router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT, summary="Удалить книгу по ID")
+@router.delete(
+    "/{id}", status_code=status.HTTP_204_NO_CONTENT, summary="Удалить книгу по ID"
+)
 async def delete_book(id: int, session: SessionDep):
     delete_book = await BooksRepository.get_one(id, session)
     if delete_book is None:
