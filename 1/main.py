@@ -18,6 +18,8 @@ users_db = [
     {"id": 1, "name": "Alice", "age": 25},
     {"id": 2, "name": "Bob", "age": 30},
 ]
+
+
 @app.get("/users")
 def get_all_users():
     """Возвращает список всех пользователей"""
@@ -51,8 +53,9 @@ def update_user_complete(user_id: int, updated_user: User):
             users_db[index] = updated_user.dict()
             return {"message": "User updated completely", "user": updated_user}
 
-
     raise HTTPException(status_code=404, detail="User not found")
+
+
 # Модель для обновления (все поля могут быть пустыми)
 class UserUpdate(BaseModel):
     name: Optional[str] = None

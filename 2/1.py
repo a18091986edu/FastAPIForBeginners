@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
 
+
 @app.get("/items")
 async def test(skip: int | None = 0, limit: int | None = 10):
     try:

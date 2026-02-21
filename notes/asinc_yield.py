@@ -1,6 +1,5 @@
 import asyncio
 
-
 LOGS = []
 
 
@@ -9,6 +8,7 @@ async def my_dependency():
     yield "working"
     yield "test"
     LOGS.append("finish")
+
 
 async def main():
     gen = my_dependency()

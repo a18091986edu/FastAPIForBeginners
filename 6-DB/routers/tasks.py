@@ -10,12 +10,10 @@ from database import SessionDep
 
 router = APIRouter(prefix="/tasks", tags=["Задачи"])
 
+
 @router.post("", response_model=STask)
-async def create_task(
-    task: STaskAdd,
-    session: SessionDep
-):
-    new_task = TaskModel(**task.model_dump()) # распаковка словаря
+async def create_task(task: STaskAdd, session: SessionDep):
+    new_task = TaskModel(**task.model_dump())  # распаковка словаря
     session.add(new_task)
     await session.commit()
     await session.refresh(new_task)
@@ -23,14 +21,8 @@ async def create_task(
 
 
 @router.get("")
-async def get_tasks(
-    session: SessionDep
-):
+async def get_tasks(session: SessionDep):
     query = Select(TaskModel)
     result = await session.execute(query)
     tasks = result.scalars().all()
     return tasks
-
-
-
-    
